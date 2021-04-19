@@ -1,0 +1,174 @@
+﻿@page "/counter"
+@using System.ComponentModel.DataAnnotations
+@using AzureSearchApp
+@using System.Threading
+@using Azure.Search.Documents.Models
+
+<h1>Azure Semantic Search</h1>
+
+<EditForm Model="@searchOptions" OnValidSubmit="@HandleSubmit"> @*EditContext="@editContext"*@
+    <input @bind-value="searchOptions.SearchText" name="SearchText" type="text"/>
+
+    <label>Query Type</label>
+    <InputSelect @bind-Value="searchOptions.QueryType">
+        <option value=""></option>
+        <option value="Simple">Simple</option>
+        <option value="Full">Full</option>
+        <option value="Semantic">Semantic</option>
+    </InputSelect>
+
+    <label>Query Language</label>
+    <InputSelect @bind-Value="searchOptions.QueryLanguage">
+        <option value=""></option>
+        <option value="None">None</option>
+        <option value="en-us">en-us</option>
+    </InputSelect>
+
+    <label>Query Answer</label>
+    <InputSelect @bind-Value="searchOptions.QueryAnswer">
+        <option value=""></option>
+        <option value="None">None</option>
+        <option value="extractive">extractive</option>
+    </InputSelect>
+
+    <label>Query Answer Count</label>
+    <InputText @bind-Value="searchOptions.QueryAnswerCount" />
+
+    <button type="submit">Submit query</button>
+    <button type="reset">Reset options</button>
+
+</EditForm>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Score</th>
+            <th>Text</th>
+            <th>Highlights</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (searchQueryException is not null)
+        {
+            <tr>
+                <td>@searchQueryException.Message</td>
+                <td>@searchQueryException.GetType().Name</td>
+                <td>@searchQueryException.HResult</td>
+                <td>@searchQueryException.ToString()</td>
+            </tr>
+        }
+        @if (answers is not null)
+        {
+            @foreach (var answer in answers)
+            {
+                <tr>
+                    <td>@answer.Key</td>
+                    <td>@answer.Score</td>
+                    <td>@answer.Text</td>
+                    <td>@answer.Highlights</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    private SemanticSearchOptions searchOptions = new SemanticSearchOptions();
+
+    private Azure.Search.Documents.SearchOptions semanticSearchOptions = new();
+    private SemanticSearcher semanticSearcher;
+
+    private SearchResults<SearchDocument> response;
+    private Exception searchQueryException;
+    private IList<AnswerResult> answers;
+
+    @*private EditContext editContext;
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(searchOptions);
+    }*@
+
+protected override async Task OnInitializedAsync()
+{
+    if (semanticSearcher is null)
+    {
+        return;
+    }
+
+    try
+    {
+        response = await semanticSearcher.SearchAsync(searchOptions.SearchText, CancellationToken.None);
+    }
+    catch (Exception e)
+    {
+        searchQueryException = e;
+    }
+    answers = response.Answers;
+}
+
+private async Task HandleSubmit()
+{
+    if (string.Equals(SearchQueryType.Full.ToString(), searchOptions.QueryType, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryType = SearchQueryType.Full;
+    }
+    else if (string.Equals(SearchQueryType.Semantic.ToString(), searchOptions.QueryType, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryType = SearchQueryType.Semantic;
+    }
+    else if (string.Equals(SearchQueryType.Simple.ToString(), searchOptions.QueryType, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryType = SearchQueryType.Simple;
+    }
+
+    if (string.Equals("en-us", searchOptions.QueryLanguage, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryLanguage = QueryLanguage.EnUs;
+    }
+    else if (string.Equals("none", searchOptions.QueryLanguage, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryLanguage = QueryLanguage.None;
+    }
+
+    if (string.Equals("extractive", searchOptions.QueryAnswer, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryAnswer = QueryAnswer.Extractive;
+    }
+    else if (string.Equals("None", searchOptions.QueryAnswer, StringComparison.OrdinalIgnoreCase))
+    {
+        semanticSearchOptions.QueryAnswer = QueryAnswer.None;
+    }
+
+    if (!string.IsNullOrEmpty(searchOptions.QueryAnswerCount) && uint.TryParse(searchOptions.QueryAnswerCount, out uint queryAnswerCount))
+    {
+        semanticSearchOptions.QueryAnswerCount = queryAnswerCount;
+    }
+
+    semanticSearcher = new SemanticSearcher(); // semanticSearchOptions);
+
+    try
+    {
+        response = await semanticSearcher.SearchAsync(searchOptions.SearchText, CancellationToken.None);
+        answers = response.Answers;
+    }
+    catch (Exception e)
+    {
+        searchQueryException = e;
+    }
+}
+
+public class SemanticSearchOptions
+{
+    public string QueryType { get; set; }
+
+    public string QueryLanguage { get; set; }
+
+    public string QueryAnswer { get; set; }
+
+    public string QueryAnswerCount { get; set; }
+
+    [Required]
+    public string SearchText { get; set; }
+}
+}
