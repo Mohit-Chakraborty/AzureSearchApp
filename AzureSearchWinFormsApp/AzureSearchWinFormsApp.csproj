@@ -7,18 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Search.Documents" Version="11.3.0-alpha.20210409.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AzureSearchApp\AzureSearchApp.csproj" />
   </ItemGroup>
 
-    <ItemGroup>
-        <Reference Include="Azure.Core">
-            <HintPath>..\..\..\..\..\..\gh\azure-sdk-for-net-2\artifacts\bin\Azure.Core\Debug\netstandard2.0\Azure.Core.dll</HintPath>
-        </Reference>
-        <Reference Include="Azure.Core.Experimental">
-            <HintPath>..\..\..\..\..\..\gh\azure-sdk-for-net-2\artifacts\bin\Azure.Core.Experimental\Debug\netstandard2.0\Azure.Core.Experimental.dll</HintPath>
-        </Reference>
-        <Reference Include="Azure.Search.Documents">
-            <HintPath>..\..\..\..\..\..\gh\azure-sdk-for-net-2\artifacts\bin\Azure.Search.Documents\Debug\netstandard2.0\Azure.Search.Documents.dll</HintPath>
-        </Reference>
-    </ItemGroup>
 </Project>

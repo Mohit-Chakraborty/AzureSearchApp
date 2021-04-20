@@ -68,6 +68,6 @@ namespace AzureSearchApp
         /// </summary>
         public HotelAddress Address { get; set; }
 
-        public HotelRoom[] Rooms { get; set; } = new HotelRoom[] { };
+        public HotelRoom[] Rooms { get; set; } = Array.Empty<HotelRoom>();
     }
 }

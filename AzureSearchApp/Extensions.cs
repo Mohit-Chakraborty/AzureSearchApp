@@ -17,7 +17,7 @@ namespace AzureSearchApp
         /// <returns>A list of the elements.</returns>
         public static async Task<List<T>> ToListAsync<T>(this AsyncPageable<T> pageable)
         {
-            List<T> values = new List<T>();
+            List<T> values = new();
             await foreach (T value in pageable)
             {
                 values.Add(value);

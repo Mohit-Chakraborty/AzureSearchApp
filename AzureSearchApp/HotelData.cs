@@ -8,7 +8,7 @@ namespace AzureSearchApp
 {
     internal sealed class HotelData
     {
-        public Hotel GetHotelData()
+        public static Hotel GetHotelData()
         {
             return new Hotel()
             {

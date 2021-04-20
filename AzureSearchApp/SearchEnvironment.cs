@@ -16,13 +16,13 @@ namespace AzureSearchApp
         /// The name of the Azure Search account to test against.
         /// </summary>
         /// <value>The Azure Search account name, read from the "AZURE_SEARCH_ACCOUNT_NAME" environment variable.</value>
-        public string SearchAccountName => GetVariable("AZURE_SEARCH_ACCOUNT_NAME");
+        public static string SearchAccountName => GetVariable("AZURE_SEARCH_ACCOUNT_NAME");
 
         /// <summary>
         /// The shared access key of the Search account to test against.
         /// </summary>
         /// <value>The Search account key, read from the "AZURE_SEARCH_ACCOUNT_KEY" environment variable.</value>
-        public string SearchAccountKey => GetVariable("AZURE_SEARCH_ACCOUNT_KEY");
+        public static string SearchAccountKey => GetVariable("AZURE_SEARCH_ACCOUNT_KEY");
 
         /// <summary>
         /// The connection string for accessing the Files Shares storage account used for testing.
@@ -43,7 +43,7 @@ namespace AzureSearchApp
         /// Returns an environment variable value.
         /// Throws when variable is not found.
         /// </summary>
-        public string GetVariable(string name)
+        public static string GetVariable(string name)
         {
             var value = GetOptionalVariable(name);
             EnsureValue(name, value);
@@ -54,7 +54,7 @@ namespace AzureSearchApp
         /// <summary>
         /// Returns an environment variable value or null when variable is not found.
         /// </summary>
-        public string GetOptionalVariable(string name)
+        public static string GetOptionalVariable(string name)
         {
             if (SearchAccountNameVariableName.Equals(name, StringComparison.OrdinalIgnoreCase))
             {
@@ -69,7 +69,7 @@ namespace AzureSearchApp
             return Environment.GetEnvironmentVariable(name);
         }
 
-        private void EnsureValue(string name, string value)
+        private static void EnsureValue(string name, string value)
         {
             if (value == null)
             {

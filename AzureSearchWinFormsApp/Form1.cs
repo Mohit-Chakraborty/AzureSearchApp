@@ -1,14 +1,11 @@
-﻿using Azure;
-using Azure.Search.Documents;
+﻿using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 using AzureSearchApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -77,9 +74,6 @@ namespace AzureSearchWinFormsApp
             {
                 SetEnabledStatusOfControls(enable: true);
             }
-
-            //var task = new SemanticSearcher(searchOptions).SearchAsync(querySearchTextBox.Text, CancellationToken.None);
-            //task.Wait();
         }
 
         private void PopulateWithResponseData(SearchResults<SearchDocument> response)
@@ -103,8 +97,6 @@ namespace AzureSearchWinFormsApp
                     answersListView.Items.Add(new ListViewItem(new string[] { result.Score?.ToString(), result.Key, result.Text, result.Highlights }));
                 }
             }
-
-            // answersListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
 
             answersListView.EndUpdate();
         }
@@ -177,7 +169,6 @@ namespace AzureSearchWinFormsApp
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            // response = null;
             answersListView.Items.Clear();
 
             queryTypeComboBox.SelectedIndex = 0;

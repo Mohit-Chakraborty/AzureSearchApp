@@ -29,7 +29,7 @@ namespace AzureSearchApp
         {
             SearchIndexClient = new SearchIndexClient(
                 new Uri(SearchEnvironment.Instance.SearchEndPoint),
-                new AzureKeyCredential(SearchEnvironment.Instance.SearchAccountKey));
+                new AzureKeyCredential(SearchEnvironment.SearchAccountKey));
             // Microsoft.Extensions.Configuration.ConfigurationExtensions.AddUserSecrets()
             // IConfigurationBuilder
 

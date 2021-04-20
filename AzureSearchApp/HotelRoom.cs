@@ -33,6 +33,6 @@ namespace AzureSearchApp
 
         [JsonPropertyName("tags")]
         // TODO: #10596 - Investigate JsonConverter for null arrays
-        public string[] Tags { get; set; } = new string[] { };
+        public string[] Tags { get; set; } = Array.Empty<string>();
     }
 }

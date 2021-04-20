@@ -15,7 +15,7 @@ namespace AzureSearchApp
         private const string SearchAccountKey = "CDEAA47FF55E16DF4895521B7BF981CD";
         private const string SearchIndexName = "oil-gas-index";
 
-        private string SearchEndPoint = $"{Uri.UriSchemeHttps}://{SearchAccountName}.search.windows.net";
+        private readonly string SearchEndPoint = $"{Uri.UriSchemeHttps}://{SearchAccountName}.search.windows.net";
 
         private SearchClient SearchClient { get; }
         private SearchIndexClient SearchIndexClient { get; }
@@ -55,10 +55,8 @@ namespace AzureSearchApp
             semanticSearchOptions.SearchFields.Add("metadata_title");
             semanticSearchOptions.SearchFields.Add("content");
 
-            //Console.WriteLine($"Search text: {searchText}");
-
             SearchResults<SearchDocument> response =
-                await SearchClient.SearchAsync<SearchDocument>(searchText, semanticSearchOptions);
+                await SearchClient.SearchAsync<SearchDocument>(searchText, semanticSearchOptions, cancellationToken: cancellationToken);
 
             return response;
         }
@@ -86,19 +84,6 @@ namespace AzureSearchApp
             List<SearchResult<SearchDocument>> docs = await response.GetResultsAsync().ToListAsync();
 
             Console.WriteLine($"Result count: {docs.Count}");
-
-            //foreach (var doc in docs)
-            //{
-            //    Debug.Assert(doc.Captions != null);
-
-            //    foreach (var caption in doc.Captions)
-            //    {
-            //        Debug.Assert(caption.Text != null);
-            //        // Debug.Assert(caption.Highlights != null);
-            //    }
-
-            //    Debug.Assert(doc.RerankerScore != null);
-            //}
         }
     }
 }
