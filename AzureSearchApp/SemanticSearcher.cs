@@ -11,11 +11,7 @@ namespace AzureSearchApp
 {
     public sealed class SemanticSearcher
     {
-        private const string SearchAccountName = "semantic-eus2-demo-luisca";
-        private const string SearchAccountKey = "CDEAA47FF55E16DF4895521B7BF981CD";
         private const string SearchIndexName = "oil-gas-index";
-
-        private readonly string SearchEndPoint = $"{Uri.UriSchemeHttps}://{SearchAccountName}.search.windows.net";
 
         private SearchClient SearchClient { get; }
         private SearchIndexClient SearchIndexClient { get; }
@@ -25,8 +21,8 @@ namespace AzureSearchApp
         public SemanticSearcher()
         {
             SearchIndexClient = new SearchIndexClient(
-                new Uri(SearchEndPoint),
-                new AzureKeyCredential(SearchAccountKey));
+                new Uri(SearchEnvironment.Instance.SearchEndPoint),
+                new AzureKeyCredential(SearchEnvironment.SearchAccountKey));
 
             SearchClient = SearchIndexClient.GetSearchClient(SearchIndexName);
         }

@@ -16,13 +16,13 @@ namespace AzureSearchApp
         /// The name of the Azure Search account to test against.
         /// </summary>
         /// <value>The Azure Search account name, read from the "AZURE_SEARCH_ACCOUNT_NAME" environment variable.</value>
-        public static string SearchAccountName => GetVariable("AZURE_SEARCH_ACCOUNT_NAME");
+        public static string SearchAccountName => GetVariable(SearchAccountNameVariableName);
 
         /// <summary>
         /// The shared access key of the Search account to test against.
         /// </summary>
         /// <value>The Search account key, read from the "AZURE_SEARCH_ACCOUNT_KEY" environment variable.</value>
-        public static string SearchAccountKey => GetVariable("AZURE_SEARCH_ACCOUNT_KEY");
+        public static string SearchAccountKey => GetVariable(SearchAccountKeyVariableName);
 
         /// <summary>
         /// The connection string for accessing the Files Shares storage account used for testing.
@@ -56,16 +56,6 @@ namespace AzureSearchApp
         /// </summary>
         public static string GetOptionalVariable(string name)
         {
-            if (SearchAccountNameVariableName.Equals(name, StringComparison.OrdinalIgnoreCase))
-            {
-                return "semantic-eus2-demo-luisca"; // "semantic-search";
-            }
-
-            if (SearchAccountKeyVariableName.Equals(name, StringComparison.OrdinalIgnoreCase))
-            {
-                return "CDEAA47FF55E16DF4895521B7BF981CD"; //  "AC5484B8165BAAE1B02CB9BCB62F65FA";
-            }
-
             return Environment.GetEnvironmentVariable(name);
         }
 
@@ -73,9 +63,7 @@ namespace AzureSearchApp
         {
             if (value == null)
             {
-                throw new InvalidOperationException(
-                    $"Unable to find environment variable {name} required by test." + Environment.NewLine +
-                    "Make sure the test environment was initialized using eng/common/TestResources/New-TestResources.ps1 script.");
+                throw new InvalidOperationException($"Unable to find environment variable {name} required by test.");
             }
         }
     }
