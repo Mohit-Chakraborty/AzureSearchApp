@@ -46,6 +46,8 @@ namespace AzureSearchWinFormsApp
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.showResultsButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +77,6 @@ namespace AzureSearchWinFormsApp
             // querySearchTextBox
             // 
             this.querySearchTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.querySearchTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.tableLayoutPanel1.SetColumnSpan(this.querySearchTextBox, 2);
             this.querySearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.querySearchTextBox.Location = new System.Drawing.Point(203, 10);
@@ -84,6 +85,7 @@ namespace AzureSearchWinFormsApp
             this.querySearchTextBox.PlaceholderText = "Enter search string here";
             this.querySearchTextBox.Size = new System.Drawing.Size(394, 25);
             this.querySearchTextBox.TabIndex = 0;
+            this.querySearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuerySearchTextBox_KeyDown);
             // 
             // queryLanguageComboBox
             // 
@@ -144,6 +146,8 @@ namespace AzureSearchWinFormsApp
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.queryTypeComboBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.searchButton, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.showResultsButton, 3, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -236,6 +240,29 @@ namespace AzureSearchWinFormsApp
             this.label1.TabIndex = 9;
             this.label1.Text = "Query Type";
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(123, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Search Text";
+            // 
+            // showResultsButton
+            // 
+            this.showResultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.showResultsButton.Location = new System.Drawing.Point(687, 124);
+            this.showResultsButton.Margin = new System.Windows.Forms.Padding(3, 20, 3, 10);
+            this.showResultsButton.Name = "showResultsButton";
+            this.showResultsButton.Size = new System.Drawing.Size(110, 35);
+            this.showResultsButton.TabIndex = 14;
+            this.showResultsButton.Text = "Show results";
+            this.showResultsButton.UseVisualStyleBackColor = true;
+            this.showResultsButton.Click += new System.EventHandler(this.ShowResultsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -272,6 +299,8 @@ namespace AzureSearchWinFormsApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button showResultsButton;
     }
 }
 
