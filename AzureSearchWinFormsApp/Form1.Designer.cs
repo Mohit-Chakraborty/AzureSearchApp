@@ -53,7 +53,8 @@ namespace AzureSearchWinFormsApp
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(203, 124);
+            this.searchButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.searchButton.Location = new System.Drawing.Point(203, 137);
             this.searchButton.Margin = new System.Windows.Forms.Padding(3, 20, 3, 10);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(110, 35);
@@ -65,7 +66,8 @@ namespace AzureSearchWinFormsApp
             // resetButton
             // 
             this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.resetButton.Location = new System.Drawing.Point(487, 124);
+            this.resetButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetButton.Location = new System.Drawing.Point(487, 137);
             this.resetButton.Margin = new System.Windows.Forms.Padding(3, 20, 3, 10);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(110, 35);
@@ -79,11 +81,12 @@ namespace AzureSearchWinFormsApp
             this.querySearchTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tableLayoutPanel1.SetColumnSpan(this.querySearchTextBox, 2);
             this.querySearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.querySearchTextBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.querySearchTextBox.Location = new System.Drawing.Point(203, 10);
             this.querySearchTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.querySearchTextBox.Name = "querySearchTextBox";
             this.querySearchTextBox.PlaceholderText = "Enter search string here";
-            this.querySearchTextBox.Size = new System.Drawing.Size(394, 25);
+            this.querySearchTextBox.Size = new System.Drawing.Size(394, 32);
             this.querySearchTextBox.TabIndex = 0;
             this.querySearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuerySearchTextBox_KeyDown);
             // 
@@ -91,38 +94,42 @@ namespace AzureSearchWinFormsApp
             // 
             this.queryLanguageComboBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.queryLanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.queryLanguageComboBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.queryLanguageComboBox.FormattingEnabled = true;
-            this.queryLanguageComboBox.Location = new System.Drawing.Point(239, 59);
+            this.queryLanguageComboBox.Location = new System.Drawing.Point(239, 56);
             this.queryLanguageComboBox.Name = "queryLanguageComboBox";
-            this.queryLanguageComboBox.Size = new System.Drawing.Size(121, 25);
+            this.queryLanguageComboBox.Size = new System.Drawing.Size(121, 33);
             this.queryLanguageComboBox.TabIndex = 2;
             // 
             // queryTypeComboBox
             // 
             this.queryTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.queryTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.queryTypeComboBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.queryTypeComboBox.FormattingEnabled = true;
-            this.queryTypeComboBox.Location = new System.Drawing.Point(39, 59);
+            this.queryTypeComboBox.Location = new System.Drawing.Point(39, 56);
             this.queryTypeComboBox.Name = "queryTypeComboBox";
-            this.queryTypeComboBox.Size = new System.Drawing.Size(121, 25);
+            this.queryTypeComboBox.Size = new System.Drawing.Size(121, 33);
             this.queryTypeComboBox.TabIndex = 1;
             // 
             // queryAnswerComboBox
             // 
             this.queryAnswerComboBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.queryAnswerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.queryAnswerComboBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.queryAnswerComboBox.FormattingEnabled = true;
-            this.queryAnswerComboBox.Location = new System.Drawing.Point(454, 59);
+            this.queryAnswerComboBox.Location = new System.Drawing.Point(454, 56);
             this.queryAnswerComboBox.Name = "queryAnswerComboBox";
-            this.queryAnswerComboBox.Size = new System.Drawing.Size(91, 25);
+            this.queryAnswerComboBox.Size = new System.Drawing.Size(91, 33);
             this.queryAnswerComboBox.TabIndex = 3;
             // 
             // queryAnswerCountTextBox
             // 
             this.queryAnswerCountTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.queryAnswerCountTextBox.Location = new System.Drawing.Point(680, 59);
+            this.queryAnswerCountTextBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.queryAnswerCountTextBox.Location = new System.Drawing.Point(680, 57);
             this.queryAnswerCountTextBox.Name = "queryAnswerCountTextBox";
-            this.queryAnswerCountTextBox.Size = new System.Drawing.Size(39, 25);
+            this.queryAnswerCountTextBox.Size = new System.Drawing.Size(39, 32);
             this.queryAnswerCountTextBox.TabIndex = 4;
             this.queryAnswerCountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.QueryAnswerCountTextBox_Validating);
             // 
@@ -171,12 +178,13 @@ namespace AzureSearchWinFormsApp
             this.highlightsColumnHeader});
             this.tableLayoutPanel1.SetColumnSpan(this.answersListView, 4);
             this.answersListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answersListView.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.answersListView.FullRowSelect = true;
             this.answersListView.GridLines = true;
             this.answersListView.HideSelection = false;
-            this.answersListView.Location = new System.Drawing.Point(3, 172);
+            this.answersListView.Location = new System.Drawing.Point(3, 185);
             this.answersListView.Name = "answersListView";
-            this.answersListView.Size = new System.Drawing.Size(794, 275);
+            this.answersListView.Size = new System.Drawing.Size(794, 262);
             this.answersListView.TabIndex = 8;
             this.answersListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -204,9 +212,10 @@ namespace AzureSearchWinFormsApp
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 87);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(224, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 17);
+            this.label2.Size = new System.Drawing.Size(151, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Query Language";
             // 
@@ -214,9 +223,10 @@ namespace AzureSearchWinFormsApp
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 87);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(413, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 17);
+            this.label3.Size = new System.Drawing.Size(174, 25);
             this.label3.TabIndex = 11;
             this.label3.Text = "Query Answer Type";
             // 
@@ -224,9 +234,10 @@ namespace AzureSearchWinFormsApp
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(636, 87);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(607, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 17);
+            this.label4.Size = new System.Drawing.Size(186, 25);
             this.label4.TabIndex = 12;
             this.label4.Text = "Query Answer Count";
             // 
@@ -234,9 +245,10 @@ namespace AzureSearchWinFormsApp
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 87);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(46, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 17);
+            this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Query Type";
             // 
@@ -244,20 +256,22 @@ namespace AzureSearchWinFormsApp
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 10);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(90, 10);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 17);
+            this.label5.Size = new System.Drawing.Size(107, 25);
             this.label5.TabIndex = 13;
             this.label5.Text = "Search Text";
             // 
             // showResultsButton
             // 
             this.showResultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showResultsButton.Location = new System.Drawing.Point(687, 124);
+            this.showResultsButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.showResultsButton.Location = new System.Drawing.Point(667, 137);
             this.showResultsButton.Margin = new System.Windows.Forms.Padding(3, 20, 3, 10);
             this.showResultsButton.Name = "showResultsButton";
-            this.showResultsButton.Size = new System.Drawing.Size(110, 35);
+            this.showResultsButton.Size = new System.Drawing.Size(130, 35);
             this.showResultsButton.TabIndex = 14;
             this.showResultsButton.Text = "Show results";
             this.showResultsButton.UseVisualStyleBackColor = true;

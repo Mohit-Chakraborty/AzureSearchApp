@@ -117,11 +117,12 @@ namespace AzureSearchWinFormsApp
 
                 IEnumerable<SearchResult<SearchDocument>> docs = response.GetResults().ToList();
 
+                int i = 0;
                 foreach (var doc in docs)
                 {
                     var docInfo = new string[]
                         {
-                            $"Title: {doc.Document["metadata_title"]?.ToString()}",
+                            $"{++i}. Title: {doc.Document["metadata_title"]?.ToString()}",
                             $"Author: {doc.Document["metadata_author"]?.ToString()}",
                             $"Score: {doc.Score?.ToString()}",
                             $"RerankerScore: {doc.RerankerScore?.ToString()}",
