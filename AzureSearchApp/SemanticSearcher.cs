@@ -11,8 +11,6 @@ namespace AzureSearchApp
 {
     public sealed class SemanticSearcher
     {
-        private const string SearchIndexName = "oil-gas-index";
-
         private SearchClient SearchClient { get; }
         private SearchIndexClient SearchIndexClient { get; }
 
@@ -24,7 +22,7 @@ namespace AzureSearchApp
                 new Uri(SearchEnvironment.Instance.SearchEndPoint),
                 new AzureKeyCredential(SearchEnvironment.SearchAccountKey));
 
-            SearchClient = SearchIndexClient.GetSearchClient(SearchIndexName);
+            SearchClient = SearchIndexClient.GetSearchClient(SearchEnvironment.SearchIndexName);
         }
 
         public SemanticSearcher(SearchOptions searchOptions) : this()

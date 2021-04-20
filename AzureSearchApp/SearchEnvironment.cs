@@ -6,6 +6,7 @@ namespace AzureSearchApp
     {
         private const string SearchAccountNameVariableName = "AZURE_SEARCH_ACCOUNT_NAME";
         private const string SearchAccountKeyVariableName = "AZURE_SEARCH_ACCOUNT_KEY";
+        private const string SearchIndexNameVariableName = "AZURE_SEARCH_INDEX_NAME";
 
         /// <summary>
         /// The shared instance of the <see cref="PerfTestEnvironment"/> to be used during test runs.
@@ -23,6 +24,12 @@ namespace AzureSearchApp
         /// </summary>
         /// <value>The Search account key, read from the "AZURE_SEARCH_ACCOUNT_KEY" environment variable.</value>
         public static string SearchAccountKey => GetVariable(SearchAccountKeyVariableName);
+
+        /// <summary>
+        /// The name of the index to test against.
+        /// </summary>
+        /// <value>The Search account key, read from the "AZURE_SEARCH_INDEX_NAME" environment variable.</value>
+        public static string SearchIndexName => GetVariable(SearchIndexNameVariableName);
 
         /// <summary>
         /// The connection string for accessing the Files Shares storage account used for testing.
